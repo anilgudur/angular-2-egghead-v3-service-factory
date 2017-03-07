@@ -3,13 +3,7 @@ import { Doors } from './doors';
 
 export class Car {
 
-    engine: Engine;
-    doors: Doors;
-
-    constructor() {
-        this.engine = new Engine;
-        this.doors = new Doors;
-    }
+    constructor(private engine: Engine, private doors: Doors) {}
 
     startEngine() {
         this.engine.start();
