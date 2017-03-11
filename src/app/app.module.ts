@@ -2,30 +2,12 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent }  from './app.component';
+import { ListModule }   from './list/list.module';
+import { ListServiceModule }   from './list/list-service.module';
 
 @NgModule({
-  imports:      [ BrowserModule ],
+  imports:      [ BrowserModule, ListModule, ListServiceModule.forRoot() ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
-
-//import { CarMain }  from './car.main';
-
-import { Engine } from './engine';
-import { Doors } from './doors';
-import { Car } from './car';
-
-function main() {
-    let engine = new Engine;
-    let doors = new Doors;
-    let car = new Car(engine, doors);
-
-    car.startEngine();
-}
-
-main();
-
-export class CarMain {
-
-}

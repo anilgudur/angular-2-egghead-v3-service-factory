@@ -8,23 +8,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var app_component_1 = require('./app.component');
-var list_module_1 = require('./list/list.module');
-var list_service_module_1 = require('./list/list-service.module');
-var AppModule = (function () {
-    function AppModule() {
+var core_1 = require("@angular/core");
+var ListService = (function () {
+    function ListService() {
+        this.items = [
+            { id: 0, name: 'Pascal Precht', country: 'Germany' },
+            { id: 1, name: 'Christoph Burgdorf', country: 'Germany' },
+            { id: 2, name: 'Thomos Burleson - Anil', country: 'United States' }
+        ];
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, list_module_1.ListModule, list_service_module_1.ListServiceModule.forRoot()],
-            declarations: [app_component_1.AppComponent],
-            bootstrap: [app_component_1.AppComponent]
-        }), 
+    ListService.prototype.getItems = function () {
+        return this.items;
+    };
+    ListService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], ListService);
+    return ListService;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.ListService = ListService;
+//# sourceMappingURL=list.service.js.map

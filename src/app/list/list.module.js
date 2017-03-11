@@ -9,22 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var app_component_1 = require('./app.component');
-var list_module_1 = require('./list/list.module');
-var list_service_module_1 = require('./list/list-service.module');
-var AppModule = (function () {
-    function AppModule() {
+var common_1 = require('@angular/common');
+var list_component_1 = require('./list.component');
+var ListModule = (function () {
+    function ListModule() {
     }
-    AppModule = __decorate([
+    ListModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, list_module_1.ListModule, list_service_module_1.ListServiceModule.forRoot()],
-            declarations: [app_component_1.AppComponent],
-            bootstrap: [app_component_1.AppComponent]
+            imports: [common_1.CommonModule],
+            exports: [list_component_1.ListComponent, common_1.CommonModule],
+            declarations: [list_component_1.ListComponent],
+            providers: []
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], ListModule);
+    return ListModule;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.ListModule = ListModule;
+//# sourceMappingURL=list.module.js.map
