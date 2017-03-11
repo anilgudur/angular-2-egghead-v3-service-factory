@@ -11,13 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var list_service_1 = require('./list.service');
 exports.ListService = list_service_1.ListService;
+var list_another_service_1 = require('./list-another.service');
+exports.ListAnotherService = list_another_service_1.ListAnotherService;
 var ListServiceModule = (function () {
     function ListServiceModule() {
     }
     ListServiceModule.forRoot = function () {
         return {
             ngModule: ListServiceModule,
-            providers: [list_service_1.ListService]
+            providers: [
+                //{provide: ListService, useClass: ListService}, 
+                { provide: list_another_service_1.ListAnotherService, useClass: list_another_service_1.ListAnotherService },
+                { provide: list_service_1.ListService, useClass: list_another_service_1.ListAnotherService }
+            ]
         };
     };
     ListServiceModule = __decorate([

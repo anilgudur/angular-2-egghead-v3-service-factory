@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { ListService } from './list.service';
+import { ListAnotherService } from './list-another.service';
 
 @NgModule({
     // imports: [],
@@ -12,11 +13,16 @@ export class ListServiceModule {
     static forRoot() {
         return {
             ngModule: ListServiceModule,
-            providers: [ListService]
+            providers: [
+                //{provide: ListService, useClass: ListService}, 
+                {provide: ListAnotherService, useClass: ListAnotherService}, 
+                {provide: ListService, useClass: ListAnotherService}
+            ]
         }
     }
 }
 
 export {
-    ListService
+    ListService,
+    ListAnotherService
 }

@@ -10,9 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var list_service_module_1 = require('./list-service.module');
+var list_service_module_2 = require('./list-service.module');
 var ListComponent = (function () {
-    function ListComponent(listService) {
+    function ListComponent(listService, listAnotherService) {
         this.listService = listService;
+        this.listAnotherService = listAnotherService;
     }
     ListComponent.prototype.ngOnInit = function () {
         // this.items = [
@@ -20,6 +22,8 @@ var ListComponent = (function () {
         //     { id:1, name:'Christoph Burgdorf', country:'Germany' },
         //     { id:2, name:'Thomos Burleson', country:'United States' }
         // ];
+        //this.items = this.listService.getItems();
+        //this.items = this.listAnotherService.getItems();
         this.items = this.listService.getItems();
     };
     ListComponent = __decorate([
@@ -28,7 +32,7 @@ var ListComponent = (function () {
             selector: 'list-component',
             template: "\n        <ul>\n            <li *ngFor=\"let item of items\">\n                {{item.id}}: {{item.name}} lives in {{item.country}}\n            </li>\n        </ul>\n    "
         }), 
-        __metadata('design:paramtypes', [list_service_module_1.ListService])
+        __metadata('design:paramtypes', [list_service_module_1.ListService, list_service_module_2.ListAnotherService])
     ], ListComponent);
     return ListComponent;
 }());
