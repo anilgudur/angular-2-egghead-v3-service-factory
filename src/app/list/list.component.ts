@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ListService } from './list-service.module';
 import { ListAnotherService } from './list-service.module';
+import { LogDebugger } from '../core/log-debugger.service';
 
 @Component({
     moduleId: module.id,
@@ -12,15 +13,28 @@ import { ListAnotherService } from './list-service.module';
                 {{item.id}}: {{item.name}} lives in {{item.country}}
             </li>
         </ul>
-    `
+    `,
+    providers: [
+        {
+            provide: LogDebugger,
+            useFactory: () => {
+                return new LogDebugger(true);
+            }
+        }
+    ]
 })
 export class ListComponent implements OnInit {
 
-    constructor(private listService: ListService, private listAnotherService: ListAnotherService){}
+    constructor(
+            private listService: ListService,
+            private listAnotherService: ListAnotherService,
+            private logDebugger: LogDebugger
+    ){}
 
     items:Array<any>;
 
     ngOnInit(): void {
+        this.logDebugger.debug("Getting list items...");
         // this.items = [
         //     { id:0, name:'Pascal Precht', country:'Germany' },
         //     { id:1, name:'Christoph Burgdorf', country:'Germany' },
