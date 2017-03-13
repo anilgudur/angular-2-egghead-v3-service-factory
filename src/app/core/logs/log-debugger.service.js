@@ -9,25 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var logs_module_1 = require('../../app/core/logs/logs.module');
-var ListAnotherService = (function () {
-    function ListAnotherService(logDebugger) {
-        this.logDebugger = logDebugger;
-        this.items = [
-            { id: 0, name: 'Anil', country: 'Germany' },
-            { id: 1, name: 'Anant', country: 'Germany' },
-            { id: 2, name: 'ABC', country: 'CCC' }
-        ];
+var console_service_1 = require('./console.service');
+var LogDebugger = (function () {
+    function LogDebugger(consoleService, enabled) {
+        this.consoleService = consoleService;
+        this.enabled = enabled;
     }
-    ListAnotherService.prototype.getItems = function () {
-        this.logDebugger.debug("Getting list items.....LAS");
-        return this.items;
+    LogDebugger.prototype.debug = function (message) {
+        if (this.enabled) {
+            this.consoleService.log("DEBUG: " + message);
+        }
     };
-    ListAnotherService = __decorate([
+    LogDebugger = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [logs_module_1.LogDebugger])
-    ], ListAnotherService);
-    return ListAnotherService;
+        __metadata('design:paramtypes', [console_service_1.ConsoleService, Boolean])
+    ], LogDebugger);
+    return LogDebugger;
 }());
-exports.ListAnotherService = ListAnotherService;
-//# sourceMappingURL=list-another.service.js.map
+exports.LogDebugger = LogDebugger;
+//# sourceMappingURL=log-debugger.service.js.map

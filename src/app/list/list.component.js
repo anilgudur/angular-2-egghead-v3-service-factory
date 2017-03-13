@@ -10,8 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var list_service_module_1 = require('./list-service.module');
-var list_service_module_2 = require('./list-service.module');
-var log_debugger_service_1 = require('../core/log-debugger.service');
+var logs_module_1 = require('../core/logs/logs.module');
 var ListComponent = (function () {
     function ListComponent(listService, listAnotherService, logDebugger) {
         this.listService = listService;
@@ -20,30 +19,17 @@ var ListComponent = (function () {
     }
     ListComponent.prototype.ngOnInit = function () {
         this.logDebugger.debug("Getting list items...");
-        // this.items = [
-        //     { id:0, name:'Pascal Precht', country:'Germany' },
-        //     { id:1, name:'Christoph Burgdorf', country:'Germany' },
-        //     { id:2, name:'Thomos Burleson', country:'United States' }
-        // ];
-        //this.items = this.listService.getItems();
-        //this.items = this.listAnotherService.getItems();
         this.items = this.listService.getItems();
+        //this.items = this.listAnotherService.getItems();
     };
     ListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'list-component',
             template: "\n        <ul>\n            <li *ngFor=\"let item of items\">\n                {{item.id}}: {{item.name}} lives in {{item.country}}\n            </li>\n        </ul>\n    ",
-            providers: [
-                {
-                    provide: log_debugger_service_1.LogDebugger,
-                    useFactory: function () {
-                        return new log_debugger_service_1.LogDebugger(true);
-                    }
-                }
-            ]
+            providers: []
         }), 
-        __metadata('design:paramtypes', [list_service_module_1.ListService, list_service_module_2.ListAnotherService, log_debugger_service_1.LogDebugger])
+        __metadata('design:paramtypes', [list_service_module_1.ListService, list_service_module_1.ListAnotherService, logs_module_1.LogDebugger])
     ], ListComponent);
     return ListComponent;
 }());

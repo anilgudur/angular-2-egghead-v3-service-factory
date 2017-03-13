@@ -14,9 +14,9 @@ export class ListServiceModule {
         return {
             ngModule: ListServiceModule,
             providers: [
-                //{provide: ListService, useClass: ListService}, 
+                {provide: ListService, useClass: ListService}, 
                 {provide: ListAnotherService, useClass: ListAnotherService}, 
-                {provide: ListService, useClass: ListAnotherService}
+                //{provide: ListService, useClass: ListAnotherService}
             ]
         }
     }

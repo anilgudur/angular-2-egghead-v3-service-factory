@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
-import { ListService } from './list-service.module';
-import { ListAnotherService } from './list-service.module';
-import { LogDebugger } from '../core/log-debugger.service';
+import { ListService, ListAnotherService } from './list-service.module';
+import { LogDebugger, ConsoleService } from '../core/logs/logs.module';
 
 @Component({
     moduleId: module.id,
@@ -15,12 +14,17 @@ import { LogDebugger } from '../core/log-debugger.service';
         </ul>
     `,
     providers: [
-        {
-            provide: LogDebugger,
-            useFactory: () => {
-                return new LogDebugger(true);
-            }
-        }
+        // {
+        //     provide: LogDebugger,
+        //     useFactory: (consoleService:ConsoleService) => {
+        //         return new LogDebugger(consoleService, true);
+        //     },
+        //     deps: [ConsoleService]
+        // },
+        // {
+        //     provide: 'isEnabledLogDebugger',
+        //     useValue: true
+        // }
     ]
 })
 export class ListComponent implements OnInit {
@@ -35,15 +39,9 @@ export class ListComponent implements OnInit {
 
     ngOnInit(): void {
         this.logDebugger.debug("Getting list items...");
-        // this.items = [
-        //     { id:0, name:'Pascal Precht', country:'Germany' },
-        //     { id:1, name:'Christoph Burgdorf', country:'Germany' },
-        //     { id:2, name:'Thomos Burleson', country:'United States' }
-        // ];
-
-        //this.items = this.listService.getItems();
-        //this.items = this.listAnotherService.getItems();
         this.items = this.listService.getItems();
+
+        //this.items = this.listAnotherService.getItems();
     }
 
 }

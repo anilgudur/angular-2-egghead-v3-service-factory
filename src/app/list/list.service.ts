@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-@Injectable()
+// import { Injectable } from "@angular/core";
+// @Injectable()
 export class ListService {
     items:Array<any> = [
         { id:0, name:'Pascal Precht', country:'Germany' },

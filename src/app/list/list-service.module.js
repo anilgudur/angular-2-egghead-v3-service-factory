@@ -20,9 +20,8 @@ var ListServiceModule = (function () {
         return {
             ngModule: ListServiceModule,
             providers: [
-                //{provide: ListService, useClass: ListService}, 
+                { provide: list_service_1.ListService, useClass: list_service_1.ListService },
                 { provide: list_another_service_1.ListAnotherService, useClass: list_another_service_1.ListAnotherService },
-                { provide: list_service_1.ListService, useClass: list_another_service_1.ListAnotherService }
             ]
         };
     };
